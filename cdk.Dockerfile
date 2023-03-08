@@ -7,5 +7,8 @@ RUN apk add --no-cache python3 py3-pip && \
 RUN apk add --no-cache nodejs npm && \
     npm install -g aws-cdk
 
+# Map AWS credentials from the host machine into the container
+VOLUME ~/.aws:/root/.aws
+
 ENTRYPOINT ["cdk"]
 
