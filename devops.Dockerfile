@@ -33,6 +33,9 @@ RUN curl -O https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraf
     rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     terraform --version
 
+# Install Terraform CDK
+RUN npm install --global cdktf-cli@latest
+
 # Add the AWS CLI to the system path
 ENV PATH="/usr/local/bin:${PATH}"
 
