@@ -53,4 +53,5 @@ terraform() { check_devops_container "$0 $*" }
 cdk() { check_devops_container "$0 $*" }
 ansible() { check_devops_container "$0 $*" }
 node() { check_devops_container "$0 $*" }
+custodian() { check_devops_container "$0 $*" }
 ```

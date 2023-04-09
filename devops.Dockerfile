@@ -5,6 +5,7 @@ ENV TERRAFORM_VERSION=1.4.2
 ENV ANSIBLE_VERSION=4.10.0
 ENV CDK_VERSION=2.68.0
 ENV NODEJS_VERSION=18.x
+ENV CUSTODIAN_VERSION=0.9.24
 
 # Install dependencies and update the package manager
 RUN microdnf update -y && \
@@ -36,6 +37,9 @@ RUN curl -O https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraf
 # Install Terraform CDK
 RUN npm install --global cdktf-cli@latest
 
+# Install Cloud Custodian
+RUN pip3 install c7n==${CUSTODIAN_VERSION}
+
 # Add the AWS CLI to the system path
 ENV PATH="/usr/local/bin:${PATH}"
 
@@ -53,6 +57,7 @@ RUN cdk --version
 RUN terraform --version
 RUN ansible --version
 RUN node --version
+RUN custodian version
 
 CMD ["tail", "-f", "/dev/null"]
 
